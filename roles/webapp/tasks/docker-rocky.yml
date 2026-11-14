@@ -1,0 +1,38 @@
+---
+- name: Install Docker prerequisites
+  ansible.builtin.dnf:
+    name:
+      - dnf-plugins-core
+      - python3
+      - python3-pip
+    state: present
+
+- name: Configure Docker repository
+  ansible.builtin.yum_repository:
+    name: docker
+    description: Docker CE Stable Repository
+    baseurl: https://download.docker.com/linux/rhel/9/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/rhel/gpg
+
+- name: Install Docker Engine
+  ansible.builtin.dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+
+- name: Install Docker Python SDK
+  ansible.builtin.dnf:
+    name: python3-docker
+    state: present
+
+- name: Ensure Docker is started
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true

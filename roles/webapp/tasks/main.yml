@@ -1,0 +1,37 @@
+#SPDX-License-Identifier: MIT-0
+---
+# Sélection de la distribution
+
+- name: Install Docker on Ubuntu
+  ansible.builtin.include_tasks: docker-ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Docker on Rocky Linux
+  ansible.builtin.include_tasks: docker-rocky.yml
+  when: ansible_distribution == "Rocky"
+
+# Déploiement commun de l'application
+
+- name: Create webapp directory
+  ansible.builtin.file:
+    path: "{{ webapp_directory }}"
+    state: directory
+    mode: "0755"
+
+- name: Deploy website template
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ webapp_directory }}/index.html"
+    mode: "0644"
+
+- name: Start Apache container
+  community.docker.docker_container:
+    name: "{{ webapp_container_name }}"
+    image: "{{ webapp_image }}"
+    state: started
+    restart_policy: unless-stopped
+    ports:
+      - "{{ webapp_port }}:80"
+    volumes:
+      - "{{ webapp_directory }}/index.html:/usr/local/apache2/htdocs/index.html:ro"
+

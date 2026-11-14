@@ -1,0 +1,6 @@
+# Paramètres par défaut de l'application web
+---
+webapp_directory: /opt/webapp
+webapp_container_name: webapp
+webapp_image: httpd:2.4
+webapp_port: "80"

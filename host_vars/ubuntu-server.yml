@@ -1,0 +1,5 @@
+---
+ansible_host: 15.237.254.126 #IP_PUBLIQUE_UBUNTU
+ansible_user: ubuntu
+ansible_become: true
+ansible_ssh_private_key_file: /home/micht/.ssh/ansible-key-pair.pem #~/.ssh/ansible-key-pair.pem

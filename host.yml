@@ -1,0 +1,11 @@
+all:
+  children:
+    ubuntu:
+      hosts:
+        ubuntu-server:
+    rocky:
+      hosts:
+        rocky-server:
+    vagrant:
+      hosts:
+        ubuntu-vagrant:
