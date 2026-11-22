@@ -454,8 +454,6 @@ Informations relevées :
 | Nom de la VM | ubuntu-ansible |
 | Nom d'hôte invité | ubuntu-vagrant |
 
-Une autre box testée précédemment, `ubuntu/noble64`, n'a pas pu être récupérée en raison d'une erreur 404. Le projet a finalement utilisé la box Bento.
-
 ### 6.3 Vérification des boxes
 
 Afficher les boxes installées :
