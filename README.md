@@ -792,14 +792,11 @@ mini-projet-ansible/
         ├── tasks/
         │   ├── main.yml
         │   ├── docker-ubuntu.yml
-        │   └── docker-centos.yml
+        │   └── docker-rocky.yml
         ├── templates/
         │   └── index.html.j2
         └── vars/
 ```
-
-Les fichiers de rôle `docker-centos.yml` et les variables historiques doivent être contrôlés afin de confirmer leur adaptation à Rocky Linux.
-
 ### 8.3 Inventaire Ansible : host.yml
 
 Le fichier `host.yml` répertorie les machines administrées.
